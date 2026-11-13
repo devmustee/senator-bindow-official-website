@@ -2,20 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-ivory text-charcoal font-sans antialiased; text-rendering: optimizeLegibility; }
+  h1, h2, h3, h4 { @apply font-serif text-navy; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  ::selection { background: #E2CC98; color: #101F36; }
+  :focus-visible { outline: 2px solid #C7A45B; outline-offset: 3px; border-radius: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .eyebrow { @apply text-[0.72rem] font-semibold uppercase tracking-eyebrow text-gold-600; }
+  .eyebrow-light { @apply text-[0.72rem] font-semibold uppercase tracking-eyebrow text-gold; }
+  .h-display { @apply font-serif text-4xl leading-[1.08] sm:text-5xl lg:text-[4.25rem]; }
+  .h-section { @apply font-serif text-3xl leading-tight sm:text-4xl; }
+  .lede { @apply text-lg leading-relaxed text-charcoal/80 sm:text-xl; }
+  .prose-body { @apply max-w-prose text-[1.05rem] leading-[1.8] text-charcoal/90; }
+  .prose-body p + p { @apply mt-5; }
+  .gold-rule { @apply block h-px w-16 bg-gold; }
+  .card { @apply rounded-sm border border-rule bg-white p-6 shadow-[0_1px_0_rgba(16,31,54,.04)] transition-shadow hover:shadow-[0_12px_32px_-16px_rgba(16,31,54,.25)]; }
+  .btn { @apply inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold tracking-wide transition-colors; }
+  .btn-gold { @apply btn bg-gold text-navy hover:bg-gold-300; }
+  .btn-ghost-light { @apply btn border border-white/30 text-white hover:border-gold hover:text-gold; }
+  .btn-ghost { @apply btn border border-navy/20 text-navy hover:border-gold-600 hover:text-gold-600; }
+  .link { @apply text-navy-700 underline decoration-gold/60 underline-offset-4 hover:decoration-gold-600; }
 }
