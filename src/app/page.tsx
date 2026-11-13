@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLink, Cite, Pattern, PortraitFrame, ResearchNote, SectionHeading, VerificationBadge } from "@/components/ui";
+import { ArrowLink, Cite, Pattern, PortraitFrame, ResearchNote, SectionHeading } from "@/components/ui";
 import { Timeline } from "@/components/Timeline";
 import Image from "next/image";
 import { allProjects, education, keyFacts, offices, profile, sectors, statements, thirdPartyAssessments, timeline } from "@/content/content";
@@ -21,6 +21,7 @@ export default function Home() {
       {/* 1. Hero */}
       <section className="relative overflow-hidden bg-navy text-white">
         <Pattern />
+        <div aria-hidden className="hero-glow" />
         <div className="container relative grid items-center gap-12 py-10 sm:py-20 lg:grid-cols-[1.25fr_0.75fr] lg:py-28">
           <div>
             {portrait && (
@@ -136,10 +137,7 @@ export default function Home() {
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-navy px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-gold">{p.sector.title.split(" ")[0].replace(",", "")}</span>
-                    <span className="eyebrow">{p.date}</span>
-                  </div>
+                  <p className="eyebrow">{p.date}</p>
                   <h3 className="h-card mt-3">{p.title}</h3>
                   <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-charcoal/80">{p.implemented.text}</p>
                   <span className="mt-auto inline-flex pt-4 min-h-[44px] items-center text-sm font-semibold text-navy-700 group-hover:text-gold-700">Full record →</span>
@@ -161,7 +159,7 @@ export default function Home() {
                   <p className="font-serif text-lg text-navy">{o.title}</p>
                   <p className="text-sm text-charcoal/70">{o.institution}</p>
                 </div>
-                <p className="text-sm font-medium text-charcoal/70">{o.start}{o.end && o.end !== "—" ? ` – ${o.end}` : ""}<span className="ml-3 rounded-full bg-navy/5 px-2 py-0.5 text-[0.65rem] uppercase tracking-wider text-navy-700">{o.kind}</span></p>
+                <p className="text-sm font-medium text-charcoal/70">{o.start}{o.end && o.end !== "—" ? ` – ${o.end}` : ""}</p>
               </li>
             ))}
           </ul>
@@ -172,10 +170,7 @@ export default function Home() {
           <ul className="mt-8 divide-y divide-rule border-y border-rule sm:mt-10">
             {education.map((e) => (
               <li key={e.title} className="py-4 sm:py-5">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="eyebrow">{e.kind}</p>
-                  <VerificationBadge level={e.fact.verification} />
-                </div>
+                <p className="eyebrow">{e.kind}</p>
                 <p className="mt-1.5 font-serif text-lg leading-snug text-navy">{e.title}</p>
               </li>
             ))}
@@ -255,7 +250,7 @@ export default function Home() {
           </div>
           <div className="mt-10">
             <ResearchNote>
-              <strong className="text-navy">About this record.</strong> This site is still being researched. Every statement is linked to a published source and labelled by how firmly it is established, from <em>Verified</em> to <em>Awaiting confirmation</em>. The research register lists {sources.length} sources so far. Read{" "}
+              <strong className="text-navy">About this record.</strong> This site is still being researched. Every statement is linked to a published source. The research register lists {sources.length} sources so far. Read{" "}
               <Link className="link" href="/sources">how we verify</Link>, including the questions still open for his office. Coverage is cited from{" "}
               {sourceById["wiki"].outlet} and Nigerian news outlets.
             </ResearchNote>

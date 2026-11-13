@@ -17,10 +17,10 @@ export default {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: { prose: "68ch" },
-      letterSpacing: { eyebrow: "0.16em" },
+      letterSpacing: { eyebrow: "0.18em" },
       boxShadow: {
-        card: "0 1px 2px rgba(16,31,54,.05), 0 1px 0 rgba(16,31,54,.03)",
-        raised: "0 18px 40px -22px rgba(16,31,54,.38)",
+        card: "0 1px 2px rgba(11,22,40,.04), 0 6px 20px -10px rgba(11,22,40,.10)",
+        raised: "0 2px 6px -2px rgba(11,22,40,.08), 0 28px 56px -28px rgba(11,22,40,.40)",
       },
       keyframes: {
         // Slide only: content is never transparent, so it is visible even if the animation never runs.

@@ -1,33 +1,20 @@
 import type { Metadata } from "next";
-import { PageHero, SectionHeading, VerificationBadge } from "@/components/ui";
-import { openQuestions, verificationHelp, type Verification } from "@/content/content";
+import { PageHero, SectionHeading } from "@/components/ui";
+import { openQuestions } from "@/content/content";
 import { sources } from "@/content/sources";
 import { allImages } from "@/content/images";
 
 export const metadata: Metadata = {
-  title: "Sources and Verification",
+  title: "Sources",
   description: "How this archive verifies information about Jibrilla Bindow, the full register of sources, and the questions still open.",
   alternates: { canonical: "/sources" },
 };
 
 export default function SourcesPage() {
-  const levels = Object.keys(verificationHelp) as Verification[];
   const sorted = [...sources].sort((a, b) => (a.date ?? "9999").localeCompare(b.date ?? "9999"));
   return (
     <>
-      <PageHero eyebrow="Method" title="Sources and Verification" intro="Every statement on this site links to a published source. This page explains how each statement is graded and lists every source used." />
-      <section className="container section-tight">
-        <SectionHeading eyebrow="Standards" title="Verification levels" />
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {levels.map((l) => (
-            <div key={l} className="card">
-              <VerificationBadge level={l} />
-              <p className="mt-3 text-sm leading-relaxed text-charcoal/75">{verificationHelp[l]}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      <PageHero eyebrow="Method" title="Sources" intro="Every statement on this site links to a published source. This page lists every source used and the questions still open." />
       <section className="border-y border-rule bg-white section-tight">
         <div className="container">
           <SectionHeading eyebrow="Register" title={`${sources.length} sources`} intro="Primary: an official record. Secondary: a news or reference report. Reported: a claim attributed to a named or unnamed person. “Abstract only” means the full article could not be retrieved during research and must be re-read before its details are relied on." />

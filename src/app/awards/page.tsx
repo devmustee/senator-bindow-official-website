@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Cite, PageHero, ResearchNote, VerificationBadge } from "@/components/ui";
+import { Cite, PageHero, ResearchNote } from "@/components/ui";
 import { awards, education } from "@/content/content";
 
 export const metadata: Metadata = {
   title: "Awards and Recognition",
-  description: "Verified national, state, institutional and traditional honours conferred on Jibrilla Bindow, each with its awarding body and date.",
+  description: "National, state, institutional and traditional honours conferred on Jibrilla Bindow, each with its awarding body and date.",
   alternates: { canonical: "/awards" },
 };
 
@@ -35,7 +35,7 @@ export default function AwardsPage() {
             <div className="mt-8 grid gap-5">
               {honorary.map((h) => (
                 <article key={h.title} className="card">
-                  <div className="flex flex-wrap justify-between gap-2"><p className="eyebrow">Honorary degree</p><VerificationBadge level={h.fact.verification} /></div>
+                  <p className="eyebrow">Honorary degree</p>
                   <h3 className="mt-2 font-serif text-xl">{h.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-charcoal/80">{h.fact.text}<Cite ids={h.fact.sources} /></p>
                 </article>

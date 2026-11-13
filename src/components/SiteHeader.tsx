@@ -23,7 +23,7 @@ export function SiteHeader({ logo }: { logo?: string | null }) {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 border-b transition-colors ${scrolled || open ? "border-white/10 bg-navy-900/95 backdrop-blur" : "border-transparent bg-navy"}`}>
+    <header className={`sticky top-0 z-50 border-b transition-colors ${scrolled || open ? "border-gold/20 bg-navy-900/90 shadow-[0_10px_30px_-18px_rgba(0,0,0,.6)] backdrop-blur-md" : "border-transparent bg-navy"}`}>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:bg-gold focus:px-3 focus:py-2 focus:text-navy">
         Skip to content
       </a>
@@ -49,10 +49,10 @@ export function SiteHeader({ logo }: { logo?: string | null }) {
                   <Link
                     href={n.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative inline-flex min-h-[44px] items-center text-[0.82rem] font-medium tracking-wide transition-colors ${active ? "text-gold" : "text-white/80 hover:text-white"}`}
+                    className={`group/nav relative inline-flex min-h-[44px] items-center text-[0.82rem] font-medium tracking-wide transition-colors ${active ? "text-gold" : "text-white/80 hover:text-white"}`}
                   >
                     {n.label}
-                    {active && <span className="absolute bottom-2 left-0 h-px w-full bg-gold" />}
+                    <span aria-hidden className={`absolute bottom-2 left-0 h-px w-full origin-left bg-gold transition-transform duration-300 ${active ? "scale-x-100" : "scale-x-0 group-hover/nav:scale-x-100"}`} />
                   </Link>
                 </li>
               );

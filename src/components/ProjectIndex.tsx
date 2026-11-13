@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { type Verification, verificationLabel } from "@/content/content";
+import type { Verification } from "@/content/content";
 
 export interface ProjectRow {
   slug: string;
@@ -62,10 +62,7 @@ export function ProjectIndex({ rows, sectors }: { rows: ProjectRow[]; sectors: {
                 </div>
               )}
               <div className="flex flex-1 flex-col p-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-navy px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-gold">{r.sector}</span>
-                  <span className="text-[0.68rem] font-semibold uppercase tracking-wider text-gold-700">{verificationLabel[r.verification]}</span>
-                </div>
+                <p className="eyebrow">{r.sector}</p>
                 <h3 className="h-card mt-3 text-navy">{r.title}</h3>
                 <p className="mt-1 text-xs text-charcoal/70">{[r.location, r.date].filter(Boolean).join(" · ")}</p>
                 <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-charcoal/80">{r.summary}</p>

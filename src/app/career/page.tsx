@@ -1,6 +1,6 @@
 import { images } from "@/content/images";
 import type { Metadata } from "next";
-import { Cite, FactLine, PageHero, SectionHeading, VerificationBadge } from "@/components/ui";
+import { Cite, FactLine, PageHero, SectionHeading } from "@/components/ui";
 import { offices, partyHistory } from "@/content/content";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function CareerPage() {
           {offices.map((o) => (
             <article key={o.title} className="card grid gap-6 md:grid-cols-[220px_1fr]">
               <div>
-                <span className={`inline-block rounded-full px-2.5 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wider ${o.kind === "Elected" ? "bg-navy text-white" : "bg-gold-100 text-[#7A5E22]"}`}>{o.kind}</span>
+                <p className="eyebrow">{o.kind}</p>
                 <p className="mt-4 font-serif text-2xl text-navy">{o.start}</p>
                 <p className="text-sm text-charcoal/70">to {o.end}</p>
               </div>
@@ -52,8 +52,7 @@ export default function CareerPage() {
                 <tr className="border-b-2 border-navy text-navy">
                   <th className="py-3 pr-6 font-semibold">Period</th>
                   <th className="py-3 pr-6 font-semibold">Party</th>
-                  <th className="py-3 pr-6 font-semibold">Record</th>
-                  <th className="py-3 font-semibold">Status</th>
+                  <th className="py-3 font-semibold">Record</th>
                 </tr>
               </thead>
               <tbody className="grid gap-3 md:table-row-group">
@@ -62,7 +61,6 @@ export default function CareerPage() {
                     <td data-label="Period" className="block font-serif text-base text-navy md:table-cell md:py-4 md:pr-6 before:mb-0.5 before:block before:text-[0.65rem] before:font-semibold before:uppercase before:tracking-eyebrow before:text-gold-700 before:content-[attr(data-label)] md:before:hidden">{p.period}</td>
                     <td data-label="Party" className="block font-medium md:table-cell md:py-4 md:pr-6 before:mb-0.5 before:block before:text-[0.65rem] before:font-semibold before:uppercase before:tracking-eyebrow before:text-gold-700 before:content-[attr(data-label)] md:before:hidden">{p.party}</td>
                     <td data-label="Record" className="block text-charcoal/80 md:table-cell md:py-4 md:pr-6 before:mb-0.5 before:block before:text-[0.65rem] before:font-semibold before:uppercase before:tracking-eyebrow before:text-gold-700 before:content-[attr(data-label)] md:before:hidden">{p.fact.text}<Cite ids={p.fact.sources} /></td>
-                    <td className="block md:table-cell md:py-4"><VerificationBadge level={p.fact.verification} /></td>
                   </tr>
                 ))}
               </tbody>

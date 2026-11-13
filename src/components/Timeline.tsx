@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { type Era, eraLabel, timeline } from "@/content/content";
-import { Cite, VerificationBadge } from "./ui";
+import { Cite } from "./ui";
 
 const eras = Object.keys(eraLabel) as Era[];
 
@@ -54,11 +54,6 @@ export function Timeline({ compact = false }: { compact?: boolean }) {
                   {t.fact.text}
                   <Cite ids={t.fact.sources} />
                 </div>
-                {t.fact.verification !== "verified" && (
-                  <div className="mt-2">
-                    <VerificationBadge level={t.fact.verification} />
-                  </div>
-                )}
               </div>
             </li>
           );

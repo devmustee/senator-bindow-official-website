@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cite, PageHero, ResearchNote, VerificationBadge } from "@/components/ui";
+import { Cite, PageHero, ResearchNote } from "@/components/ui";
 import { sectors, timeline } from "@/content/content";
 
 export const metadata: Metadata = {
@@ -32,10 +32,7 @@ export default function AchievementsPage() {
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {items.filter((i) => i.category === c).map((i) => (
                 <article key={i.title} className="card flex flex-col">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="eyebrow">{i.date}</p>
-                    <VerificationBadge level={i.fact.verification} />
-                  </div>
+                  <p className="eyebrow">{i.date}</p>
                   <h3 className="mt-3 font-serif text-xl">{i.title}</h3>
                   {i.location && <p className="text-sm text-charcoal/70">{i.location}</p>}
                   <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-charcoal/80">{i.fact.text}</p>

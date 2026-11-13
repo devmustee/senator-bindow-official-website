@@ -54,28 +54,10 @@ export default function GovernorshipPage() {
 
       <section className="container pb-8">
         <SectorChips sectors={sectorItems} />
-        <details className="mt-6 rounded-md border border-rule bg-white text-sm leading-relaxed text-charcoal/75 lg:hidden">
-          <summary className="flex min-h-[48px] items-center justify-between px-4 font-semibold text-navy">
-            How to read this record <span aria-hidden className="text-gold-700">+</span>
-          </summary>
-          <div className="border-t border-rule px-4 py-4">
-              <p><strong>Initiated by the administration</strong>: started by the state government during this term.</p>
-              <p className="mt-2"><strong>Partner-funded</strong>: co-financed with UNICEF, the World Bank or other partners.</p>
-              <p className="mt-2"><strong>Federal Government project</strong>: in the state but not a state initiative.</p>
-              <p className="mt-2"><strong>Official claim</strong>: a figure given by the government or its supporters and not independently confirmed.</p>
-          </div>
-        </details>
         <div className="mt-8 grid gap-8 lg:mt-0 lg:grid-cols-[230px_1fr]">
           <nav aria-label="Sectors" className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
             <p className="eyebrow">Sectors</p>
             <SectorList sectors={sectorItems} />
-            <div className="mt-8 rounded-md border border-rule bg-white p-5 text-xs leading-relaxed text-charcoal/75">
-              <p className="eyebrow mb-3">Reading this record</p>
-              <p><strong>Initiated by the administration</strong>: started by the state government during this term.</p>
-              <p className="mt-2"><strong>Partner-funded</strong>: co-financed with UNICEF, the World Bank or other partners.</p>
-              <p className="mt-2"><strong>Federal Government project</strong>: in the state but not a state initiative.</p>
-              <p className="mt-2"><strong>Official claim</strong>: a figure given by the government or its supporters and not independently confirmed.</p>
-            </div>
           </nav>
 
           <div className="space-y-16 lg:space-y-24">
@@ -104,7 +86,7 @@ export default function GovernorshipPage() {
 
       <section className="container section-tight">
         <ResearchNote>
-          <strong className="text-navy">About the photographs and figures.</strong> No openly licensed photographs of the projects themselves could be found, so most cards have none. A card shows a photograph only when it is of the event itself or labelled as a location photograph. Where people posted photographs of a project on Facebook, the card links to the post and credits them; those photographs will be shown here once their owners give permission. Costs, kilometres and beneficiary numbers appear only where a source gives them. They are labelled as official claims unless independently confirmed. Opinion articles by supporters are cited as claims, never as confirmation.
+          <strong className="text-navy">About the photographs and figures.</strong> No openly licensed photographs of the projects themselves could be found, so most cards have none. A card shows a photograph only when it is of the event itself or labelled as a location photograph. Where people posted photographs of a project on Facebook, the card links to the post and credits them; those photographs will be shown here once their owners give permission. Costs, kilometres and beneficiary numbers appear only where a source gives them. Opinion articles by supporters are never used as confirmation.
         </ResearchNote>
       </section>
     </>

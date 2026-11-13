@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cite, PageHero, ResearchNote, VerificationBadge } from "@/components/ui";
+import { Cite, PageHero, ResearchNote } from "@/components/ui";
 import { statements, profile } from "@/content/content";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ const chapters: Chapter[] = [
       <>
         <p>
           Muhammadu Umaru Jibrilla Bindow was born in Adamawa State in north-eastern Nigeria. Published sources do not agree on the year. Some give 15 April 1965 and others 16 June 1963.
-          <Cite ids={["wiki"]} /> <VerificationBadge level="unconfirmed" />
+          <Cite ids={["wiki"]} />
         </p>
         <p>
           The press writes his name in several ways, including <em>Bindow Jibrilla</em>, <em>Bindo Jibrilla</em> and <em>Mohammed Umar Jibrilla Bindow</em>. They all refer to the same man.
@@ -59,7 +59,7 @@ const chapters: Chapter[] = [
     body: (
       <p>
         His academic record has not yet been documented from primary sources. A 2018 report says he is believed to hold a diploma in business administration from a foreign institution. A government official quoted in the same report said he holds an honorary doctorate from Crescent University.
-        <Cite ids={["vanguard-2018-qualification"]} /> <VerificationBadge level="unconfirmed" /> The full record and the questions still open are on the{" "}
+        <Cite ids={["vanguard-2018-qualification"]} /> The full record and the questions still open are on the{" "}
         <Link href="/education" className="link">Education</Link> page.
       </p>
     ),
@@ -73,7 +73,7 @@ const chapters: Chapter[] = [
       <p>
         He came to public attention as a businessman. In 2010 and 2011 the press described him as an industrialist and a business tycoon who was new to politics, and said he had founded three companies in Mubi employing about 400 people.
         <Cite ids={["dt-2010-tycoon", "nd-2011-industrialist"]} /> His reported interests have included farming and oil and gas.
-        <Cite ids={["vanguard-2018-qualification"]} /> <VerificationBadge level="reported" />
+        <Cite ids={["vanguard-2018-qualification"]} />
       </p>
     ),
   },
@@ -120,7 +120,7 @@ const chapters: Chapter[] = [
         <p>
           He was sworn in on 29 May 2015, with Martins Babale as deputy governor.
           <Cite ids={["wiki"]} /> Federal allocations were falling and much of northern Adamawa was recovering from insurgency. The governor said the state had used overdrafts to pay salaries. He said he had cut his own pay by about half and was clearing arrears owed to workers.
-          <Cite ids={["blueprint-2015-roads", "newsexpress-2015-roads"]} /> <VerificationBadge level="claim" />
+          <Cite ids={["blueprint-2015-roads", "newsexpress-2015-roads"]} />
         </p>
         <p>
           He put roads first, starting with township roads in Yola, Jimeta and Mubi. Rural routes followed, among them the 27.5 km Girei–Pariya–Wuro Boki road started in 2016. He said schools, hospitals and agriculture would come next.

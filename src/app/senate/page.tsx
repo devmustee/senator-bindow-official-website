@@ -1,6 +1,6 @@
 import { images } from "@/content/images";
 import type { Metadata } from "next";
-import { Cite, FactLine, Figure, PageHero, ResearchNote, SectionHeading, VerificationBadge } from "@/components/ui";
+import { Cite, FactLine, Figure, PageHero, ResearchNote, SectionHeading } from "@/components/ui";
 import { constituencyWork, legislation, offices, senateContext, senateRoles, timeline } from "@/content/content";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function SenatePage() {
         image={images.senate}
         eyebrow="7th National Assembly · 2011–2015"
         title="Senator for Adamawa North"
-        intro="His election, roles, legislation and constituency work. Items taken from the Senate's own Order and Notice Papers are marked as verified; press reports are labelled as such."
+        intro="His election, roles, legislation and constituency work. Drawn from the Senate's own Order and Notice Papers and from press reports."
       />
 
       <section className="container section grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
@@ -57,14 +57,11 @@ export default function SenatePage() {
 
       <section id="roles" className="scroll-mt-24 border-t border-rule bg-white section">
         <div className="container">
-          <SectionHeading eyebrow="Roles and committees" title="Positions in the Senate" intro="The only committee post found so far comes from a 2015 magazine profile. It stays marked unconfirmed until the 7th Senate committee list is located." />
+          <SectionHeading eyebrow="Roles and committees" title="Positions in the Senate" intro="The only committee post found so far comes from a 2015 magazine profile. The 7th Senate committee list has not yet been located to confirm it." />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {senateRoles.map((r) => (
               <article key={r.title} className="card flex flex-col">
-                <div className="flex items-start justify-between gap-3">
-                  <p className="eyebrow">{r.period}</p>
-                  <VerificationBadge level={r.fact.verification} />
-                </div>
+                <p className="eyebrow">{r.period}</p>
                 <h3 className="mt-3 font-serif text-xl leading-snug text-navy">{r.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-charcoal/75">
                   {r.fact.text}
@@ -85,7 +82,6 @@ export default function SenatePage() {
                 <p className="font-serif text-3xl text-gold-700">{l.ref ?? l.kind}</p>
                 <p className="text-xs font-semibold uppercase tracking-eyebrow text-navy">{l.kind} · {l.role}</p>
                 <p className="text-sm text-charcoal/70">{l.date}</p>
-                <VerificationBadge level={l.fact.verification} />
               </div>
               <div>
                 <h3 className="font-serif text-xl leading-snug text-navy">{l.title}</h3>
@@ -100,7 +96,7 @@ export default function SenatePage() {
                   )}
                 </dl>
                 <p className="mt-4 leading-relaxed text-charcoal/80">{l.summary}</p>
-                <div className="mt-4 text-sm text-charcoal/70"><FactLine fact={l.fact} showBadge={false} /></div>
+                <div className="mt-4 text-sm text-charcoal/70"><FactLine fact={l.fact} /></div>
               </div>
             </article>
           ))}
@@ -113,15 +109,12 @@ export default function SenatePage() {
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {constituencyWork.map((c) => (
               <article key={c.title} className="card">
-                <div className="flex items-start justify-between gap-3">
-                  <p className="eyebrow">{c.date}</p>
-                  <VerificationBadge level={c.fact.verification} />
-                </div>
+                <p className="eyebrow">{c.date}</p>
                 <h3 className="mt-3 font-serif text-xl text-navy">{c.title}</h3>
                 {c.location && <p className="mt-1 text-xs uppercase tracking-eyebrow text-charcoal/70">{c.location}</p>}
                 <div className="mt-4 space-y-3 text-sm text-charcoal/80">
-                  <FactLine fact={c.fact} showBadge={false} />
-                  {c.more?.map((m) => <FactLine key={m.text} fact={m} showBadge={false} />)}
+                  <FactLine fact={c.fact} />
+                  {c.more?.map((m) => <FactLine key={m.text} fact={m} />)}
                 </div>
               </article>
             ))}

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cite, PageHero, ResearchNote, SectionHeading, VerificationBadge } from "@/components/ui";
+import { Cite, PageHero, ResearchNote, SectionHeading } from "@/components/ui";
 import { education, educationContext } from "@/content/content";
 
 export const metadata: Metadata = {
   title: "Education and Academic Background",
   description:
-    "The documented education of Jibrilla Bindow, with academic, professional and honorary qualifications kept separate and each labelled by verification status.",
+    "The documented education of Jibrilla Bindow, with academic, professional and honorary qualifications kept separate and each with its source.",
   alternates: { canonical: "/education" },
 };
 
@@ -21,11 +21,8 @@ export default function EducationPage() {
           <div className="mt-10 space-y-5">
             {education.map((e) => (
               <article key={e.title} className="card">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <span className="rounded-full bg-navy/5 px-2.5 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wider text-navy-700">{e.kind}</span>
-                  <VerificationBadge level={e.fact.verification} />
-                </div>
-                <h3 className="mt-4 font-serif text-2xl">{e.title}</h3>
+                <p className="eyebrow">{e.kind}</p>
+                <h3 className="mt-3 font-serif text-2xl">{e.title}</h3>
                 <p className="mt-3 leading-relaxed text-charcoal/80">{e.fact.text}<Cite ids={e.fact.sources} /></p>
               </article>
             ))}
