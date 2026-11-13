@@ -19,7 +19,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero eyebrow="Correspondence" title="Contact and Official Enquiries" />
-      <section className="container grid gap-12 py-16 lg:grid-cols-[1fr_1fr] lg:py-24">
+      <section className="container section grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
         <div className="grid gap-4 sm:grid-cols-2">
           {kinds.map(([t, d]) => (
             <div key={t} className="card">

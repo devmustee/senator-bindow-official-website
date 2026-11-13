@@ -12,7 +12,7 @@ export default function SpeechesPage() {
   return (
     <>
       <PageHero eyebrow="Library" title="Speeches and Public Addresses" intro="Official speeches, addresses and remarks. If no transcript exists, we link to the original report or recording and do not write one." />
-      <section className="container py-16 lg:py-24">
+      <section className="container section">
         <h2 className="h-section">Reported remarks</h2>
         <span className="gold-rule mt-4" />
         <div className="mt-10 grid gap-6">
@@ -20,7 +20,7 @@ export default function SpeechesPage() {
             <article key={s.date} className="card grid gap-4 md:grid-cols-[200px_1fr]">
               <div>
                 <p className="eyebrow">{s.date}</p>
-                <p className="mt-2 text-sm text-charcoal/60">{s.context}</p>
+                <p className="mt-2 text-sm text-charcoal/70">{s.context}</p>
               </div>
               <div>
                 {s.direct ? (
@@ -28,7 +28,7 @@ export default function SpeechesPage() {
                 ) : (
                   <p className="leading-relaxed text-charcoal/85"><span className="eyebrow mr-2">Paraphrase</span>{s.text}</p>
                 )}
-                <p className="mt-3 text-xs text-charcoal/55">As reported by <Cite ids={[s.source]} /></p>
+                <p className="mt-3 text-xs text-charcoal/70">As reported by <Cite ids={[s.source]} /></p>
               </div>
             </article>
           ))}

@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import { Cite, PageHero, ResearchNote, VerificationBadge } from "@/components/ui";
 import { sectors, timeline } from "@/content/content";
@@ -24,8 +23,8 @@ export default function AchievementsPage() {
 
   return (
     <>
-      <PageHero image={images.farmland} eyebrow="Record of Service" title="Achievements and Contributions" intro="Ordered by category. Each entry shows whether the outcome has been independently reported or rests on an official claim." />
-      <div className="container py-16 lg:py-24">
+      <PageHero eyebrow="Record of Service" title="Achievements and Contributions" intro="Ordered by category. Each entry shows whether the outcome has been independently reported or rests on an official claim." />
+      <div className="container section">
         {categories.map((c) => (
           <section key={c} className="mb-16">
             <h2 className="h-section">{c}</h2>
@@ -38,9 +37,9 @@ export default function AchievementsPage() {
                     <VerificationBadge level={i.fact.verification} />
                   </div>
                   <h3 className="mt-3 font-serif text-xl">{i.title}</h3>
-                  {i.location && <p className="text-sm text-charcoal/55">{i.location}</p>}
+                  {i.location && <p className="text-sm text-charcoal/70">{i.location}</p>}
                   <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-charcoal/80">{i.fact.text}</p>
-                  <div className="mt-4 border-t border-rule pt-3 text-xs text-charcoal/55">Source <Cite ids={i.fact.sources} /></div>
+                  <div className="mt-4 border-t border-rule pt-3 text-xs text-charcoal/70">Source <Cite ids={i.fact.sources} /></div>
                 </article>
               ))}
             </div>

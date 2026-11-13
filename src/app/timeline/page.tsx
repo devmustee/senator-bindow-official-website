@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui";
 import { Timeline } from "@/components/Timeline";
@@ -12,8 +11,8 @@ export const metadata: Metadata = {
 export default function TimelinePage() {
   return (
     <>
-      <PageHero image={images.benueYola} eyebrow="Chronology" title="Milestones and Life Timeline" intro="Each entry is sourced. Filter by period to follow a single chapter of his life." />
-      <section className="container py-16 lg:py-24"><Timeline /></section>
+      <PageHero eyebrow="Chronology" title="Milestones and Life Timeline" intro="Each entry is sourced. Filter by period to follow a single chapter of his life." />
+      <section className="container section"><h2 className="sr-only">Timeline entries</h2><Timeline /></section>
     </>
   );
 }

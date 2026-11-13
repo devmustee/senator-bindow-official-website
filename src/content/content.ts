@@ -189,6 +189,17 @@ export const timeline: TimelineEvent[] = [
     },
   },
   {
+    date: "January 2013",
+    year: 2013,
+    era: "senate",
+    title: "Sponsors constitution alteration bill SB. 235",
+    fact: {
+      text: "His bill to add the ICPC, EFCC and FERMA to the Constitution's list of Federal Executive Bodies was listed for Second Reading on the Senate Notice Paper of 16–17 January 2013.",
+      sources: ["senate-2013-notice-24"],
+      verification: "verified",
+    },
+  },
+  {
     date: "September 2014",
     year: 2014,
     era: "senate",
@@ -435,6 +446,8 @@ export const offices: Office[] = [
     successor: "Binta Masi Garba",
     notes: [
       { text: "Elected on 9 April 2011 with 75,112 votes against 70,890 for Boni Haruna (ACN).", sources: ["punch-2011-result", "inec-2011", "wiki"], verification: "verified" },
+      { text: "Sponsored constitution alteration bill SB. 235 (2013) and co-sponsored motions on the solid minerals sector and on the death of Chinua Achebe.", sources: ["senate-2013-notice-24", "senate-2013-order-116", "senate-2013-order-142"], verification: "verified" },
+      { text: "Reported as Vice Chairman of a Senate committee named as “Defence and Army/ Science and Technology”; not yet confirmed from Senate records.", sources: ["timenigeria-2015-governors"], verification: "unconfirmed" },
     ],
   },
   {
@@ -485,6 +498,20 @@ export interface Initiative {
   /** A licensed photograph. If it shows the place rather than the project itself, `imageIsContext` is true. */
   image?: ImageKey;
   imageIsContext?: boolean;
+  /**
+   * Public Facebook posts with photos of the project, shown as Facebook embeds
+   * (hosted and credited by Facebook, never copied). Each was checked against
+   * a news source before being listed.
+   */
+  facebookPosts?: FacebookPost[];
+}
+
+export interface FacebookPost {
+  url: string;
+  poster: string;
+  date: string;
+  /** What the photos show and how they were checked. */
+  note: string;
 }
 
 export interface Sector {
@@ -499,7 +526,6 @@ export const sectors: Sector[] = [
   {
     slug: "infrastructure",
     title: "Infrastructure and Urban Development",
-    image: "yolaWelcome",
     summary:
       "Roads came first. In December 2015 the governor said roads were the starting point because existing infrastructure was poor, and that schools, health and agriculture would follow. By 2018 he said the administration had built more than 200 roads across the state.",
     initiatives: [
@@ -517,12 +543,11 @@ export const sectors: Sector[] = [
           verification: "claim",
         },
         more: [
+          { text: "In June 2017 the governor said his administration had executed 126 roads totalling 216 km, and five bridges, for ₦16 billion, and planned six new road projects in Yola.", sources: ["dailynigerian-2017-roads"], verification: "claim" },
           { text: "In February 2016 the governor's team, led by the Secretary to the State Government, said 41 Yola–Jimeta roads would be ready for commissioning by June.", sources: ["blueprint-2016-openings"], verification: "claim" },
           { text: "A June 2017 review said over 150 roads had been built by then. In August 2018 the governor said the administration had built more than 200 roads across the state.", sources: ["blueprint-2017-review", "dt-2018-fg-road"], verification: "claim" },
         ],
         status: "Many roads were reported completed between 2015 and 2018. A complete list of the roads and their completion dates has not yet been documented.",
-        image: "jimetaMarket",
-        imageIsContext: true,
       },
       {
         slug: "yola-named-roads",
@@ -538,12 +563,19 @@ export const sectors: Sector[] = [
           verification: "reported",
         },
         more: [
+          { text: "On 7 July 2015, about five weeks into the term, a journalist posted photos of the governor visiting the ongoing road project by the Adamawa Sunshine Express park in Yola. Daily Trust reported the Gumti road as the link to that park.", sources: ["fb-2015-sunshine", "dt-2015-estate-developer"], verification: "reported" },
           { text: "A 2016 opinion article said the Gumti road was built by Royyco Construction, that Vice President Osinbajo flagged off the Wuro Jabbe road, and that the Yola bypass was more than 60 per cent complete.", sources: ["thewill-2016-burden"], verification: "claim" },
           { text: "In April 2017 Vice President Yemi Osinbajo inaugurated a road in Yola named after him.", sources: ["thenews-2017-osinbajo-road"], verification: "reported" },
         ],
         status: "Under construction in 2016. Some roads were inaugurated by 2017. The final status of each road is not yet documented.",
-        image: "yolaEntrance",
-        imageIsContext: true,
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/kabiru.journalist/posts/pfbid02MdMRoPhcrQau6kve8xyBERsxccfsxJHyTtYpf4dz3SE6V2497713BK9ZsRgoQ2pl",
+            poster: "Kabeer Hassan Dewa",
+            date: "7 July 2015",
+            note: "Photos of the governor's inspection of the road works by the Adamawa Sunshine Express park, Yola: the inspection party on the earthworks and the site. The post does not name the road; Daily Trust identifies the Gumti road as the link to the park.",
+          },
+        ],
       },
       {
         slug: "mubi-roads",
@@ -559,11 +591,18 @@ export const sectors: Sector[] = [
           verification: "claim",
         },
         more: [
+          { text: "In April 2019 a supporter posted 30 photos of finished Mubi roads, saying the administration had built over 40 roads with concrete drains, three box culverts and a two-span bridge in Mubi. The count is the poster's and is not yet confirmed.", sources: ["fb-2019-mubi-roads"], verification: "unconfirmed" },
           { text: "A YouTube video records the governor commissioning street lights in Mubi.", sources: ["youtube-mubi-lights"], verification: "reported" },
         ],
         status: "Reported completed. The list comes from a supporter's opinion article and has not been checked against ministry records.",
-        image: "adsuMubi",
-        imageIsContext: true,
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02YrcSdPgwuyQpV1FwjtH9mGVZWW5jJGsmxMHdjYmfvkryqEYW1q4kH8mDD2U7XVJ9l&id=100002807531777",
+            poster: "Auwal Hajja",
+            date: "4 April 2019",
+            note: "Photos of finished, tarred Mubi township roads with concrete side drains and street-light poles. Posted in the last weeks of his term; individual road names are not given.",
+          },
+        ],
       },
       {
         slug: "girei-pariya-wuro-boki",
@@ -578,9 +617,22 @@ export const sectors: Sector[] = [
           sources: ["eagle-2016-girei"],
           verification: "reported",
         },
-        status: "Construction started in November 2016. Completion is not yet documented.",
-        image: "farmland",
-        imageIsContext: true,
+        more: [
+          {
+            text: "A March 2018 Facebook post on his inspection visit says 18 of the 27 km had been done, and names the contractor as Raycon. The figure is the poster's and not yet confirmed from official records.",
+            sources: ["fb-2018-pariya"],
+            verification: "unconfirmed",
+          },
+        ],
+        status: "Construction started in November 2016 and was under way in March 2018. Completion is not yet documented.",
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02EXzowS7pswVSBuVPfgaq5BEvbNuv1ew62VdFQs3XuPtdd8qKsB1JPWhJQsoxotDJl&id=100002807531777",
+            poster: "Auwal Hajja",
+            date: "19 March 2018",
+            note: "Photos taken during construction: graders, tippers and a roller on the earthworks, and the governor's inspection party on site. Posted during his term and consistent with the project's November 2016 start.",
+          },
+        ],
       },
       {
         slug: "street-lights-power",
@@ -597,8 +649,6 @@ export const sectors: Sector[] = [
           { text: "A 2016 opinion article said more than 350 solar street lights had been installed, a 33kV line to about four LGAs rehabilitated, and more than six LGAs electrified.", sources: ["thewill-2016-touching"], verification: "claim" },
         ],
         status: "Jimeta–Yola lighting was reported nearly complete in December 2015. The other figures come from a supporter's opinion article.",
-        image: "yolaWelcome",
-        imageIsContext: true,
       },
       {
         slug: "yola-drainage",
@@ -613,8 +663,6 @@ export const sectors: Sector[] = [
           verification: "claim",
         },
         status: "Awarded in 2015. Completion is not yet documented.",
-        image: "benueYola",
-        imageIsContext: true,
       },
       {
         slug: "rural-access-ramp",
@@ -629,8 +677,6 @@ export const sectors: Sector[] = [
           verification: "claim",
         },
         status: "Counterpart funding committed. The partner programme continued into later administrations, so outcomes after 2019 are not credited here.",
-        image: "farmland",
-        imageIsContext: true,
       },
       {
         slug: "housing-estate",
@@ -664,8 +710,70 @@ export const sectors: Sector[] = [
           { text: "A 2016 opinion article said renovation of Yola International Hotel had resumed with its contract sum reviewed to ₦1.2 billion, that the Jimeta Stadium complex was 50 per cent complete with its contractor back on site, and that the Adamawa Sunshine terminus had been upgraded.", sources: ["thewill-2016-burden", "thewill-2016-touching"], verification: "claim" },
         ],
         status: "Under way in 2016. Completion is not yet documented.",
-        image: "yolaGpo",
-        imageIsContext: true,
+      },
+      {
+        slug: "kiri-shelleng-road",
+        title: "Kiri Junction–Shelleng road (37 km)",
+        location: "Shelleng LGA",
+        date: "July 2016",
+        agency: "Adamawa State Ministry of Works. Contractor named on the site signboard: Triacta Nigeria Ltd",
+        attribution: "Initiated by the administration",
+        objective: "Tar the untarred 37 km road linking Shelleng, the local government headquarters, to the Numan–Guyuk highway.",
+        implemented: {
+          text: "Tribune reported in August 2016 that the governor had visited Shelleng to launch construction of the 37 km road, which residents said had never been tarred.",
+          sources: ["tribune-2016-shelleng"],
+          verification: "reported",
+        },
+        more: [
+          { text: "A November 2017 Facebook post described the road as 50% complete at that time.", sources: ["fb-2017-hong"], verification: "unconfirmed" },
+          {
+            text: "A 2023 post by a Shelleng resident says the 37.5 km road was flagged off on 16 July 2016, awarded to Triacta for ₦3.2 billion, and completed under his successor. The cost and completion date are not yet confirmed from official records.",
+            sources: ["fb-2023-shelleng"],
+            verification: "unconfirmed",
+          },
+        ],
+        status: "Construction launched in July 2016. Reported completed under the next administration; completion date not yet documented.",
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/medan.ampeni/posts/pfbid0xZtukoxzJn2kffgruWhyHrfYGfmSEyUr6G6azuD3et2LL6aBNbQXYPZeJjMEg187l",
+            poster: "Dukopani Paurimai",
+            date: "8 August 2023",
+            note: "Photos of the finished road at Kiri. One shows the project signboard: “Construction of 37km Kiri Junction – Shelleng Road”, Ministry of Works Yola, Triacta Nigeria Limited, matching the Tribune report of the July 2016 launch.",
+          },
+        ],
+      },
+      {
+        slug: "gada-mayo-bridge",
+        title: "Gada Mayo bridge, Song (4 spans)",
+        location: "Song LGA",
+        date: "2017",
+        agency: "Contractor: Triacta (named by the site engineer)",
+        attribution: "Initiated by the administration",
+        objective: "Build a four-span bridge at Gada Mayo, a campaign promise to the people of Song in 2015.",
+        implemented: {
+          text: "His official Facebook page posted photos of the bridge beams being lifted into place on 6 November 2017, describing the Gada Mayo bridge as under construction and as fulfilling a 2015 campaign promise.",
+          sources: ["fb-2017-gada-mayo-official"],
+          verification: "claim",
+        },
+        more: [
+          { text: "Two days later he inspected the works. Triacta's engineer told him the bridge would be completed by December 2017.", sources: ["fb-2017-gada-mayo-visit"], verification: "reported" },
+          { text: "In June 2017 the governor said his administration had built five bridges; he did not name them in that report.", sources: ["dailynigerian-2017-roads"], verification: "claim" },
+        ],
+        status: "Under construction in November 2017, with completion promised for December 2017. Completion date not yet documented.",
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/OfficialBindowJibrilla/posts/pfbid021XMakzu9r3c6oHQ1BWLVU3XwCxTMrWVAETFM3iGtUUeAzgwU73LfbwP1XzD1ME7ul",
+            poster: "Mohammed Umaru Jibrilla (official page)",
+            date: "6 November 2017",
+            note: "Construction photos: precast beams being craned onto the piers. The page credits the photos to Auwal Hajja.",
+          },
+          {
+            url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0bST2juizug5xa9LcSAq9K9KMFPDRxhmgZjRk88fGjvWVHzr9oVQThMWyJYYxStJ1l&id=100002807531777",
+            poster: "Auwal Hajja",
+            date: "8 November 2017",
+            note: "Photos of the inspection visit: piers, abutments and wing walls under construction, and the governor with the contractor's engineer on site.",
+          },
+        ],
       },
       {
         slug: "mayo-belwa-toungo",
@@ -680,15 +788,12 @@ export const sectors: Sector[] = [
           verification: "verified",
         },
         status: "Federal project started in 2018. Not credited to the state government.",
-        image: "ganyePost",
-        imageIsContext: true,
       },
     ],
   },
   {
     slug: "education",
     title: "Education",
-    image: "mau",
     summary:
       "In June 2017 the State Executive Council declared a state of emergency in education and health. It approved renovation of dilapidated secondary schools, supply of learning materials and a revived teachers' college. Schools damaged by the insurgency were also earmarked for repair.",
     initiatives: [
@@ -706,11 +811,19 @@ export const sectors: Sector[] = [
           verification: "reported",
         },
         more: [
+          { text: "In June 2017 the governor said 78 schools had been built and ₦1.9 billion was available to renovate or build 123 primary and secondary schools under the education emergency.", sources: ["dailynigerian-2017-roads"], verification: "claim" },
+          { text: "The plaque at GSS Hong records that the school was renovated in 2017 by the governor, an old boy of the school, with Zarru Energy Limited as contractor. A November 2017 Facebook post also lists renovations at GSS Demsa, GTSS and GSS Mubi, Villanova Secondary School Numan and GDSS Sorau; those other schools are not yet confirmed from official records.", sources: ["fb-2017-hong"], verification: "reported" },
           { text: "₦487 million was approved for the first phase of secondary school renovation, including textbooks, desks, beds and other furniture.", sources: ["blueprint-2017-review", "nationaldaily-2017-emergency"], verification: "reported" },
         ],
         status: "Contracts approved in June 2017. Completion is not yet documented.",
-        image: "adsuMubi",
-        imageIsContext: true,
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02BCUdcJjBouxGyfGA7iVfGifYEHimWBv8zm6M7XqixPFY9ELJ6mVjFn6mcDcXGdKrl&id=100002807531777",
+            poster: "Auwal Hajja",
+            date: "8 November 2017",
+            note: "Photos from the commissioning at GSS Hong. The plaque reads: “G.S.S Hong, dedicated 30/3/1971 and was renovated 2017 by His Excellency Sen. Mohammed Umar Jibrilla (Bindow), Old Boy, Governor, Adamawa State. Contractor: Zarru Energy Limited.” This matches the June 2017 renovation programme listed above.",
+          },
+        ],
       },
       {
         slug: "learning-materials",
@@ -771,7 +884,6 @@ export const sectors: Sector[] = [
   {
     slug: "health",
     title: "Healthcare",
-    image: "euMalakohi",
     summary:
       "The health system the administration inherited had been damaged by insurgency and years of under-investment. The Specialist Hospital in Yola, for example, had not had a major rehabilitation since 1958. The administration began rebuilding general hospitals and declared health a state of emergency alongside education in 2017.",
     initiatives: [
@@ -788,6 +900,8 @@ export const sectors: Sector[] = [
           verification: "claim",
         },
         more: [
+          { text: "In June 2017 the governor said three general hospitals were being upgraded, one in each senatorial district.", sources: ["dailynigerian-2017-roads"], verification: "claim" },
+          { text: "A November 2017 Facebook post lists renovation of the theatre at the Specialist Hospital Yola and of the cottage hospital in Maiha. Not yet confirmed from official records.", sources: ["fb-2017-hong"], verification: "unconfirmed" },
           { text: "A committee chaired by Deputy Governor Martins Babale assessed the hospitals, and contracts were awarded for selected renovations.", sources: ["blueprint-2017-review"], verification: "claim" },
         ],
         status: "Contracts awarded. Completion of each hospital is not yet documented.",
@@ -806,11 +920,10 @@ export const sectors: Sector[] = [
           verification: "reported",
         },
         more: [
+          { text: "A November 2017 Facebook post lists doctors' quarters and a maternity complex under construction at Numan General Hospital. Not yet confirmed from official records.", sources: ["fb-2017-hong"], verification: "unconfirmed" },
           { text: "₦162 million was reported for the general renovation of Numan General Hospital, covering the maternity complex, wards, doctors' quarters and water supply.", sources: ["nationaldaily-2017-emergency"], verification: "unconfirmed" },
         ],
         status: "Approved in June 2017. Completion is not yet documented.",
-        image: "numanConfluence",
-        imageIsContext: true,
       },
       {
         slug: "specialist-hospital",
@@ -861,7 +974,6 @@ export const sectors: Sector[] = [
   {
     slug: "agriculture",
     title: "Agriculture and Rural Development",
-    image: "farmland",
     summary:
       "Insecurity had cost many farmers three planting seasons. The administration made mechanisation, fertiliser supply and dry-season farming central to recovery.",
     initiatives: [
@@ -869,7 +981,7 @@ export const sectors: Sector[] = [
         slug: "tractors",
         title: "Tractor mechanisation programme",
         location: "All 21 LGAs",
-        date: "January 2017 – December 2018",
+        date: "December 2016 – December 2018",
         agency: "Ministry of Agriculture (Commissioner Ahmadu Waziri)",
         attribution: "Initiated by the administration",
         objective: "Give farmers access to mechanised land preparation.",
@@ -879,10 +991,18 @@ export const sectors: Sector[] = [
           verification: "verified",
         },
         more: [
+          { text: "A supporters' page posted on 8 December 2016 that the governor had that day flagged off distribution of 105 Massey Ferguson tractors and implements to the 21 LGAs. Its photos show rows of tractors marked with individual local government councils, such as Demsa and Maiha.", sources: ["fb-2016-tractors"], verification: "reported" },
           { text: "At the 2018 Farmers' Day in Mayo-Belwa the governor said more than 153 tractors had been distributed in total.", sources: ["blueprint-2018-tractors"], verification: "claim" },
         ],
         status: "105 tractors distributed in January 2017. The 153 cumulative total is a government figure.",
-        image: "farmland",
+        facebookPosts: [
+          {
+            url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02H3FH4yv5cSw5NMAYfwJVki8PjHkgoHNqgrsVXCbLN2fmgLFSMVanFc6jV9BAf59Pl&id=100081200784955",
+            poster: "Adamawa First (supporters' page)",
+            date: "8 December 2016",
+            note: "Photos from the flag-off: new red Massey Ferguson 375 tractors painted with the names of local government councils, and rows of new disc harrows. Matches the 105 tractors for 21 LGAs that ThisDay reported in January 2017.",
+          },
+        ],
       },
       {
         slug: "fertiliser",
@@ -934,7 +1054,6 @@ export const sectors: Sector[] = [
   {
     slug: "economy",
     title: "Economic Development, Youth and Enterprise",
-    image: "jimetaMarket",
     summary:
       "The administration's flagship empowerment scheme gave soft loans to small and informal businesses across all wards. Alongside it, the government worked to raise state revenue and open federal credit lines.",
     initiatives: [
@@ -988,7 +1107,6 @@ export const sectors: Sector[] = [
   {
     slug: "security",
     title: "Security, Peace and Humanitarian Response",
-    image: "euMalakohi",
     summary:
       "The term began amid the insurgency's humanitarian aftermath and recurring farmer–herder violence in the south of the state. The government responded with compensation, mediation committees and support for the federal North East Development Commission.",
     initiatives: [
@@ -1051,7 +1169,6 @@ export const sectors: Sector[] = [
   {
     slug: "governance",
     title: "Governance and Public Finance",
-    image: "lamidoPalace",
     summary:
       "The first months of the term were shaped by falling federal allocations. The governor described overdrafts to pay salaries, a cut in his own pay and the clearing of arrears owed to workers. Executive Council meetings were also held outside the capital.",
     initiatives: [
@@ -1274,14 +1391,165 @@ export const contact: { label: string; value: string; href: string }[] = [];
 /* Research gaps — what is still needed from the office or archives    */
 /* ------------------------------------------------------------------ */
 
+// ---------------------------------------------------------------------------
+// Senate record, 2011–2015. Only items found in the Senate's own papers are
+// marked "verified"; press reports are labelled by what they are.
+// ---------------------------------------------------------------------------
+export interface SenateRole {
+  title: string;
+  period: string;
+  fact: Fact;
+}
+
+export const senateRoles: SenateRole[] = [
+  {
+    title: "Senator, Adamawa North",
+    period: "2011–2015 · 7th National Assembly",
+    fact: {
+      text: "Represented Adamawa North in the Senate for the PDP. The Senate papers list him as “Sen. Mohammed Bindo Jibrilla (Adamawa North)”, and also as “Mohammed U. Jibrilla” and “Mohammed Bindowo”.",
+      sources: ["senate-2013-notice-24", "senate-2013-order-116", "senate-2013-order-103", "wiki"],
+      verification: "verified",
+    },
+  },
+  {
+    title: "Vice Chairman, Senate committee (Defence and Army / Science and Technology)",
+    period: "Within 2011–2015; dates not given",
+    fact: {
+      text: "A 2015 profile says he “was the Vice Chairman of Senate Committee on Defence and Army/ Science and Technology”. The wording runs committee names together, so it is unclear whether this was one post or two. No Senate committee list for the 7th Senate has yet been found to confirm it.",
+      sources: ["timenigeria-2015-governors"],
+      verification: "unconfirmed",
+    },
+  },
+  {
+    title: "Youngest senator from Adamawa State",
+    period: "Described in July 2013",
+    fact: {
+      text: "A 2013 Daily Trust opinion column on Adamawa's federal lawmakers called him “the youngest senator from Adamawa State” (spelling his name “Bindawa”).",
+      sources: ["dt-2013-assessing"],
+      verification: "reported",
+    },
+  },
+];
+
+export type LegislationRole = "Sponsor" | "Co-sponsor";
+
+export interface Legislation {
+  kind: "Bill" | "Motion";
+  ref?: string;
+  title: string;
+  role: LegislationRole;
+  lead?: string;
+  date: string;
+  stage: string;
+  summary: string;
+  fact: Fact;
+}
+
+export const legislation: Legislation[] = [
+  {
+    kind: "Bill",
+    ref: "SB. 235",
+    title:
+      "A Bill for an Act to alter the Constitution of the Federal Republic of Nigeria 1999 to include the ICPC, the EFCC and the Federal Roads Maintenance Agency (FERMA) in the List of Federal Executive Bodies Established by the Constitution, 2013",
+    role: "Sponsor",
+    date: "January 2013",
+    stage: "Listed for Second Reading",
+    summary:
+      "A constitution alteration bill to name the two anti-corruption agencies and the federal roads maintenance agency among the Federal Executive Bodies set up by the Constitution itself (Section 153 and the Third Schedule), rather than only by ordinary Acts.",
+    fact: {
+      text: "The Senate Notice Paper for 16–17 January 2013 lists SB. 235 for Second Reading in the name of “Sen. Mohammed Bindo Jibrilla (Adamawa North)”. Its later progress has not yet been traced.",
+      sources: ["senate-2013-notice-24"],
+      verification: "verified",
+    },
+  },
+  {
+    kind: "Motion",
+    title: "Development of the Solid Minerals Sector as a Panacea to the Bankruptcy of States of the Federation and Creation of Jobs in Nigeria",
+    role: "Co-sponsor",
+    lead: "Sen. Abu Ibrahim (Katsina South)",
+    date: "January–February 2013",
+    stage: "Listed under Orders of the Day, 31 January and 19 February 2013",
+    summary:
+      "The motion noted over 32 strategic minerals found across all states and low capital allocations to the sector. It asked the Committee on Solid Minerals to assess the sector and, with other committees, to investigate the Natural Resources Development Fund. It also urged the President to apply the 13% derivation principle to solid-mineral-producing states.",
+    fact: {
+      text: "He is listed among the co-sponsors on the Senate Order Papers of 31 January 2013 (“Sen. Mohammed Bindowo”) and 19 February 2013 (“Sen. Mohammed U. Jibrilla”).",
+      sources: ["senate-2013-order-103", "senate-2013-order-116"],
+      verification: "verified",
+    },
+  },
+  {
+    kind: "Motion",
+    title: "The Death of Professor Chinualumogu Albert Achebe (Ugo N'Abo of Ogidi), 16 November 1930 – 21 March 2013",
+    role: "Co-sponsor",
+    lead: "Sen. Chris Nwabueze Ngige (Anambra Central)",
+    date: "27 March 2013",
+    stage: "Listed under Orders of the Day",
+    summary: "A condolence motion marking the death of the novelist Chinua Achebe, moved by an Anambra senator with co-sponsors from across the country.",
+    fact: {
+      text: "The Senate Order Paper of 27 March 2013 lists “Sen. Bindo Jibrilla” among the co-sponsors.",
+      sources: ["senate-2013-order-142"],
+      verification: "verified",
+    },
+  },
+];
+
+export interface ConstituencyItem {
+  title: string;
+  location?: string;
+  date: string;
+  fact: Fact;
+  more?: Fact[];
+}
+
+export const constituencyWork: ConstituencyItem[] = [
+  {
+    title: "Donations of motorcycles, grinding machines and other items",
+    location: "Adamawa North (places not named)",
+    date: "Before July 2013",
+    fact: {
+      text: "A Daily Trust opinion column said he had “recently donated motorcycles, grinding machines, and other such items to his constituency”.",
+      sources: ["dt-2013-assessing"],
+      verification: "reported",
+    },
+    more: [
+      {
+        text: "The same column reported that unnamed pundits saw such schemes as outdated, and said his future depended on how he redefined his engagement with the constituency.",
+        sources: ["dt-2013-assessing"],
+        verification: "reported",
+      },
+    ],
+  },
+  {
+    title: "Vimtim–Bazza and Garkida road project (nomination)",
+    location: "Mubi North, Michika and Gombi areas",
+    date: "Undated; the road began in 2016",
+    fact: {
+      text: "A 2021 newspaper report says he nominated the Vimtim–Bazza and Garkida road project, and that his successor paid the counterpart funding. It describes Vimtim–Bazza as a World Bank-assisted rural access road given to the state in 2016, when he was governor, so the nomination may date from his governorship rather than his Senate term.",
+      sources: ["finder-2021-abbo"],
+      verification: "unconfirmed",
+    },
+  },
+];
+
+/** Context for the last year of the term, shown on the Senate page. */
+export const senateContext: Fact[] = [
+  {
+    text: "Daily Trust listed “the Senator representing Northern Senatorial Zone, Muhammad Jibrilla who hails from Maiha” among prominent people whose home areas were affected as insurgents extended their control to Michika and Mubi in 2014.",
+    sources: ["dt-2014-cant-go-home"],
+    verification: "reported",
+  },
+];
+
 export const openQuestions: string[] = [
   "Date and place of birth: confirm 15 April 1965 or 16 June 1963, and the town.",
   "Family background and upbringing, limited to what the family is willing to publish.",
   "Primary, secondary and tertiary schools, with years and qualifications and documents where possible.",
   "Confirm the honorary doctorate (awarding institution and year) and the business diploma (institution and year).",
   "Names and sectors of the companies founded in Mubi, with dates.",
-  "Senate committee memberships, 2011–2015, from the National Assembly records.",
-  "Bills and motions sponsored or co-sponsored in the 7th Senate.",
+  "Senate committee memberships, 2011–2015: confirm the reported vice-chairmanship (Defence and Army / Science and Technology) against the 7th Senate committee list.",
+  "Bills and motions in the 7th Senate beyond the three found so far, and what became of SB. 235 after Second Reading.",
+  "Constituency projects 2011–2015 by name, place, agency and status, from his office or the budget office's constituency-project lists.",
+  "Photographs of him at the National Assembly, 2011–2015, with photographer and permission.",
   "Ministry records for the governorship projects: final completion status, cost and commissioning dates.",
   "Education, health, youth, women and economic programmes from 2015 to 2019, with official names.",
   "National, state and traditional honours, with the awarding body and date.",

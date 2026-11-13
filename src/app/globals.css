@@ -3,30 +3,74 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
-  body { @apply bg-ivory text-charcoal font-sans antialiased; text-rendering: optimizeLegibility; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 4.5rem; }
+  @media (min-width: 1024px) { html { scroll-padding-top: 6rem; } }
+  body {
+    @apply bg-ivory text-charcoal font-sans antialiased;
+    font-size: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+  }
   h1, h2, h3, h4 { @apply font-serif text-navy; text-wrap: balance; }
   p { text-wrap: pretty; }
+  img { max-width: 100%; }
   ::selection { background: #E2CC98; color: #101F36; }
   :focus-visible { outline: 2px solid #C7A45B; outline-offset: 3px; border-radius: 2px; }
+  summary { cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
 }
 
 @layer components {
-  .eyebrow { @apply text-[0.72rem] font-semibold uppercase tracking-eyebrow text-gold-600; }
-  .eyebrow-light { @apply text-[0.72rem] font-semibold uppercase tracking-eyebrow text-gold; }
-  .h-display { @apply font-serif text-4xl leading-[1.08] sm:text-5xl lg:text-[4.25rem]; }
-  .h-section { @apply font-serif text-3xl leading-tight sm:text-4xl; }
-  .lede { @apply text-lg leading-relaxed text-charcoal/80 sm:text-xl; }
-  .prose-body { @apply max-w-prose text-[1.05rem] leading-[1.8] text-charcoal/90; }
+  /* Gutters: 16px phones, 24px from 640px, 32px from 1024px (Tailwind's container padding only follows its own screens list). */
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1024px) { .container { padding-left: 2rem; padding-right: 2rem; } }
+
+  /* Type: fluid, mobile first */
+  .eyebrow { @apply text-[0.6875rem] font-semibold uppercase tracking-eyebrow text-gold-700; }
+  .eyebrow-light { @apply text-[0.6875rem] font-semibold uppercase tracking-eyebrow text-gold; }
+  .h-display { @apply font-serif; font-size: clamp(2.25rem, 1.6rem + 3.2vw, 4.25rem); line-height: 1.06; letter-spacing: -0.01em; }
+  .h-section { @apply font-serif; font-size: clamp(1.75rem, 1.45rem + 1.4vw, 2.5rem); line-height: 1.15; }
+  .h-card { @apply font-serif text-xl leading-snug sm:text-[1.375rem]; }
+  .lede { @apply leading-relaxed text-charcoal/80; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); }
+  .prose-body { @apply max-w-prose leading-[1.75] text-charcoal/90; font-size: clamp(1rem, 0.97rem + 0.2vw, 1.0625rem); }
   .prose-body p + p { @apply mt-5; }
-  .gold-rule { @apply block h-px w-16 bg-gold; }
-  .card { @apply rounded-sm border border-rule bg-white p-6 shadow-[0_1px_0_rgba(16,31,54,.04)] transition-shadow hover:shadow-[0_12px_32px_-16px_rgba(16,31,54,.25)]; }
-  .btn { @apply inline-flex items-center gap-2 rounded-sm px-6 py-3 text-sm font-semibold tracking-wide transition-colors; }
+  .muted { @apply text-charcoal/70; }
+
+  /* Rhythm */
+  .section { @apply py-14 sm:py-20 lg:py-28; }
+  .section-tight { @apply py-10 sm:py-14; }
+
+  /* Surfaces */
+  .gold-rule { @apply block h-px w-14 bg-gold; }
+  .card { @apply rounded-md border border-rule bg-white p-5 shadow-card sm:p-6; }
+  .card-link { @apply card block transition-[box-shadow,transform,border-color] duration-200; }
+  @media (hover: hover) {
+    .card-link:hover { @apply -translate-y-0.5 border-gold/50 shadow-raised; }
+  }
+
+  /* Controls: 44px minimum targets */
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold tracking-wide transition-colors; }
   .btn-gold { @apply btn bg-gold text-navy hover:bg-gold-300; }
   .btn-ghost-light { @apply btn border border-white/30 text-white hover:border-gold hover:text-gold; }
-  .btn-ghost { @apply btn border border-navy/20 text-navy hover:border-gold-600 hover:text-gold-600; }
+  .btn-ghost { @apply btn border border-navy/20 text-navy hover:border-gold-600 hover:text-gold-700; }
+  .chip { @apply inline-flex min-h-[40px] shrink-0 items-center rounded-full border px-4 text-xs font-semibold tracking-wide transition-colors; }
+  .chip-on { @apply border-navy bg-navy text-white; }
+  .chip-off { @apply border-rule bg-white text-charcoal/75 hover:border-gold; }
   .link { @apply text-navy-700 underline decoration-gold/60 underline-offset-4 hover:decoration-gold-600; }
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Horizontal swipe rows on phones, grid from md */
+  .snap-row { @apply -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6; scrollbar-width: none; }
+  .snap-row::-webkit-scrollbar { display: none; }
+  .snap-row > * { @apply w-[85%] shrink-0 snap-start sm:w-[60%]; }
+  @media (min-width: 768px) {
+    .snap-row { @apply mx-0 grid snap-none overflow-visible px-0 pb-0; }
+    .snap-row > * { @apply w-auto; }
+  }
 }

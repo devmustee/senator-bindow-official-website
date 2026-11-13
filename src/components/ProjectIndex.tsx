@@ -16,7 +16,7 @@ export interface ProjectRow {
   verification: Verification;
   status: string;
   summary: string;
-  image?: { src: string; alt: string; contain?: boolean };
+  image?: { src: string; alt: string; contain?: boolean; context?: boolean };
 }
 
 export function ProjectIndex({ rows, sectors }: { rows: ProjectRow[]; sectors: { slug: string; title: string }[] }) {
@@ -31,46 +31,46 @@ export function ProjectIndex({ rows, sectors }: { rows: ProjectRow[]; sectors: {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 md:mx-0 md:flex-wrap md:px-0">
-          {[{ slug: "all", title: "All sectors" }, ...sectors].map((s) => (
-            <button
-              key={s.slug}
-              onClick={() => setSector(s.slug)}
-              aria-pressed={sector === s.slug}
-              className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-colors ${sector === s.slug ? "border-navy bg-navy text-white" : "border-rule bg-white text-charcoal/70 hover:border-gold"}`}
-            >
-              {s.title}
-            </button>
-          ))}
-        </div>
-        <label className="grid gap-1 text-sm md:w-72">
-          <span className="eyebrow">Search projects</span>
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. Mubi, hospital, tractors" className="rounded-sm border border-rule bg-white px-3 py-2.5" />
-        </label>
+      <label className="grid gap-1.5">
+        <span className="eyebrow">Search projects</span>
+        <input
+          type="search"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="e.g. Mubi, hospital, tractors"
+          className="min-h-[48px] w-full rounded-md border border-rule bg-white px-4 text-base md:max-w-md"
+        />
+      </label>
+      <div className="no-scrollbar -mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6 md:mx-0 md:flex-wrap md:px-0" role="group" aria-label="Filter by sector">
+        {[{ slug: "all", title: "All sectors" }, ...sectors].map((s) => (
+          <button key={s.slug} type="button" onClick={() => setSector(s.slug)} aria-pressed={sector === s.slug} className={`chip ${sector === s.slug ? "chip-on" : "chip-off"}`}>
+            {s.title}
+          </button>
+        ))}
       </div>
-      <p className="mt-6 text-sm text-charcoal/60">{shown.length} of {rows.length} projects</p>
-      <ul className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <p className="mt-6 text-sm text-charcoal/70" aria-live="polite">
+        {shown.length} of {rows.length} projects
+      </p>
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
         {shown.map((r) => (
           <li key={r.slug}>
-            <Link href={`/governorship#${r.slug}`} className="group flex h-full flex-col overflow-hidden rounded-sm border border-rule bg-white transition-shadow hover:shadow-[0_16px_40px_-20px_rgba(16,31,54,.35)]">
-              <div className="relative aspect-[16/9] bg-navy">
-                {r.image ? (
-                  <Image src={r.image.src} alt={r.image.alt} fill sizes="(min-width:1280px) 33vw, (min-width:640px) 50vw, 100vw" className={`${r.image.contain ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-[1.03]`} />
-                ) : (
-                  <div className="flex h-full items-center justify-center font-serif text-5xl text-gold/40">❖</div>
-                )}
-                <span className="absolute left-3 top-3 rounded-full bg-navy/85 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-gold">{r.sector}</span>
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <p className="eyebrow">{r.date}</p>
-                <h3 className="mt-2 font-serif text-xl leading-snug text-navy">{r.title}</h3>
-                {r.location && <p className="mt-1 text-xs text-charcoal/55">{r.location}</p>}
-                <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-charcoal/75">{r.summary}</p>
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-rule pt-3 text-[0.68rem] uppercase tracking-wider">
-                  <span className="text-charcoal/55">{r.attribution}</span>
-                  <span className="font-semibold text-gold-600">{verificationLabel[r.verification]}</span>
+            <Link href={`/governorship#${r.slug}`} className="card-link group flex h-full flex-col overflow-hidden !p-0">
+              {r.image && (
+                <div className="relative aspect-[16/9] bg-navy">
+                  <Image src={r.image.src} alt={r.image.alt} fill sizes="(min-width:1280px) 380px, (min-width:640px) 50vw, 100vw" className={r.image.contain ? "object-contain" : "object-cover"} />
+                  {r.image.context && <span className="absolute bottom-2 left-2 rounded bg-navy/85 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-white/90">Location photo</span>}
                 </div>
+              )}
+              <div className="flex flex-1 flex-col p-5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-full bg-navy px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-gold">{r.sector}</span>
+                  <span className="text-[0.68rem] font-semibold uppercase tracking-wider text-gold-700">{verificationLabel[r.verification]}</span>
+                </div>
+                <h3 className="h-card mt-3 text-navy">{r.title}</h3>
+                <p className="mt-1 text-xs text-charcoal/70">{[r.location, r.date].filter(Boolean).join(" · ")}</p>
+                <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-charcoal/80">{r.summary}</p>
+                <p className="mt-3 flex-1 border-l-2 border-gold/60 pl-3 text-xs leading-relaxed text-charcoal/75">{r.status}</p>
+                <span className="mt-4 inline-flex min-h-[44px] items-center text-sm font-semibold text-navy-700 group-hover:text-gold-700">Full record →</span>
               </div>
             </Link>
           </li>

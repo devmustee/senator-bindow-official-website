@@ -13,14 +13,14 @@ export default function AwardsPage() {
   return (
     <>
       <PageHero eyebrow="Honours" title="Awards and Recognition" intro="Official awards, honorary degrees, traditional titles and informal recognition are listed separately, each with the awarding body and date." />
-      <section className="container py-16 lg:py-24">
+      <section className="container section">
         {awards.length > 0 ? (
           <div className="grid gap-5 md:grid-cols-2">
             {awards.map((a) => (
               <article key={a.title} className="card">
                 <p className="eyebrow">{a.kind} · {a.date}</p>
                 <h2 className="mt-2 font-serif text-2xl">{a.title}</h2>
-                <p className="text-sm text-charcoal/60">{a.body}</p>
+                <p className="text-sm text-charcoal/70">{a.body}</p>
                 <p className="mt-3 text-sm">{a.fact.text}<Cite ids={a.fact.sources} /></p>
               </article>
             ))}

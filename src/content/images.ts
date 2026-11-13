@@ -45,66 +45,21 @@ export const images = {
     caption: "The gateway arch into Yola, capital of Adamawa State.",
     category: "Adamawa: Places", location: "Yola", creator: "Mr. Snatch", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=176043698",
   }, CC0),
-  yolaGpo: img("yola-gpo.jpg", {
-    alt: "The General Post Office building in Yola",
-    caption: "General Post Office, Yola.",
-    category: "Adamawa: Places", location: "Yola", creator: "Teshaisha", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=120441905",
-  }, BYSA4),
-  benueYola: img("benue-yola.jpg", {
-    alt: "The River Benue at Yola",
-    caption: "The River Benue at Yola.",
-    category: "Adamawa: Places", location: "Yola", creator: "Nwuanyi", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=23153825",
-  }, BYSA2),
   yolaEntrance: img("yola-entrance.jpg", {
     alt: "Main entrance into Yola town",
     caption: "Main entrance to Yola.",
     category: "Adamawa: Places", location: "Yola", creator: "Nwuanyi", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=113489670",
   }, BYSA2),
-  yolaBridge: img("yola-bridge.jpg", {
-    alt: "A bridge on the approach to Yola",
-    caption: "Bridge on the approach to Yola.",
-    category: "Adamawa: Places", location: "Yola", creator: "Nwuanyi", sourceUrl: "https://www.flickr.com/photos/45474390@N07/4177814440",
-  }, BYSA2),
-  lamidoPalace: img("lamido-palace.jpg", {
-    alt: "The palace of the Lamido of Adamawa in Yola",
-    caption: "Palace of the Lamido of Adamawa, Yola.",
-    category: "Adamawa: Places", location: "Yola", creator: "Mr. Snatch", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=176074936",
-  }, CC0),
   jimetaMarket: img("jimeta-market.jpg", {
     alt: "Jimeta Modern Market",
     caption: "Jimeta Modern Market, the commercial heart of Yola North.",
     category: "Adamawa: Places", location: "Jimeta", creator: "Kundushima Ben Isaac", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=116556608",
   }, BYSA4),
-  numanConfluence: img("numan-confluence.jpg", {
-    alt: "The confluence of rivers at Numan, Adamawa State",
-    caption: "The river confluence at Numan.",
-    category: "Adamawa: Places", location: "Numan", creator: "Saadah 4469", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=60550471",
-  }, BYSA4),
-  adsuMubi: img("adsu-mubi.jpg", {
-    alt: "Adamawa State University campus in Mubi",
-    caption: "Adamawa State University, Mubi.",
-    category: "Mubi", location: "Mubi", creator: "Mamman AA", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=130399373",
-  }, BYSA4),
-  mubiMap: img("mubi-north-map.svg", {
-    alt: "Map of Adamawa State with Mubi North Local Government Area highlighted",
-    caption: "Mubi North Local Government Area within Adamawa State.",
-    category: "Mubi", location: "Mubi North", creator: "BlueSahelian", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=149089959",
-  }, CC0),
   farmland: img("adamawa-farmland.jpg", {
     alt: "Farmland with baobab trees and a distant tractor in Adamawa State",
     caption: "Farmland in Adamawa State. Agriculture is the main livelihood of most residents.",
     category: "Agriculture and Land", location: "Adamawa State", creator: "Ifeatu Nnaobi", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=135002485",
   }, BYSA4),
-  ganyePost: img("ganye-post-office.jpg", {
-    alt: "Ganye Post Office in Ganye town",
-    caption: "Ganye town, southern Adamawa.",
-    category: "Adamawa: Places", location: "Ganye", creator: "Sabiu001", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=120073330",
-  }, BYSA4),
-  mau: img("mau-yola.jpg", {
-    alt: "Gate of Modibbo Adama University, Yola",
-    caption: "Modibbo Adama University, Yola.",
-    category: "Education Landscape", location: "Yola", creator: "Mlamido", sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=176302795",
-  }, CC0),
   senate: img("senate-building.jpg", {
     alt: "The Senate wing (Red Chamber) of the National Assembly, Abuja",
     caption: "The Senate (Red Chamber) of the National Assembly, Abuja, where he sat from 2011 to 2015.",

@@ -14,7 +14,7 @@ export default function CareerPage() {
   return (
     <>
       <PageHero image={images.nassMace} eyebrow="Public Service" title="Political and Public Career" intro="Elected offices, private-sector roles and party affiliations in date order. Each is sourced, and elected roles are kept separate from private ones." />
-      <section className="container py-16 lg:py-24">
+      <section className="container section">
         <SectionHeading eyebrow="Offices" title="Positions held" />
         <div className="mt-12 grid gap-6">
           {offices.map((o) => (
@@ -22,11 +22,11 @@ export default function CareerPage() {
               <div>
                 <span className={`inline-block rounded-full px-2.5 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wider ${o.kind === "Elected" ? "bg-navy text-white" : "bg-gold-100 text-[#7A5E22]"}`}>{o.kind}</span>
                 <p className="mt-4 font-serif text-2xl text-navy">{o.start}</p>
-                <p className="text-sm text-charcoal/60">to {o.end}</p>
+                <p className="text-sm text-charcoal/70">to {o.end}</p>
               </div>
               <div>
                 <h2 className="font-serif text-2xl">{o.title}</h2>
-                <p className="mt-1 text-charcoal/60">{o.institution}</p>
+                <p className="mt-1 text-charcoal/70">{o.institution}</p>
                 {(o.party || o.predecessor) && (
                   <dl className="mt-5 grid gap-x-8 gap-y-2 text-sm sm:grid-cols-3">
                     {o.party && <div><dt className="eyebrow">Party</dt><dd className="mt-1">{o.party}</dd></div>}
@@ -43,12 +43,12 @@ export default function CareerPage() {
         </div>
       </section>
 
-      <section className="border-t border-rule bg-white py-16 lg:py-24">
+      <section className="border-t border-rule bg-white section">
         <div className="container">
           <SectionHeading eyebrow="Affiliations" title="Party history" intro="His party affiliation has changed several times, as is common in Nigerian politics. The record is set out here in full." />
-          <div className="mt-12 overflow-x-auto">
-            <table className="w-full min-w-[640px] text-left text-sm">
-              <thead>
+          <div className="mt-10 md:mt-12">
+            <table className="block w-full text-left text-sm md:table">
+              <thead className="hidden md:table-header-group">
                 <tr className="border-b-2 border-navy text-navy">
                   <th className="py-3 pr-6 font-semibold">Period</th>
                   <th className="py-3 pr-6 font-semibold">Party</th>
@@ -56,13 +56,13 @@ export default function CareerPage() {
                   <th className="py-3 font-semibold">Status</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="grid gap-3 md:table-row-group">
                 {partyHistory.map((p) => (
-                  <tr key={p.period} className="border-b border-rule align-top">
-                    <td className="py-4 pr-6 font-serif text-base text-navy">{p.period}</td>
-                    <td className="py-4 pr-6 font-medium">{p.party}</td>
-                    <td className="py-4 pr-6 text-charcoal/80">{p.fact.text}<Cite ids={p.fact.sources} /></td>
-                    <td className="py-4"><VerificationBadge level={p.fact.verification} /></td>
+                  <tr key={p.period} className="grid gap-3 rounded-md border border-rule bg-white p-4 md:table-row md:rounded-none md:border-x-0 md:border-t-0 md:p-0 md:align-top">
+                    <td data-label="Period" className="block font-serif text-base text-navy md:table-cell md:py-4 md:pr-6 before:mb-0.5 before:block before:text-[0.65rem] before:font-semibold before:uppercase before:tracking-eyebrow before:text-gold-700 before:content-[attr(data-label)] md:before:hidden">{p.period}</td>
+                    <td data-label="Party" className="block font-medium md:table-cell md:py-4 md:pr-6 before:mb-0.5 before:block before:text-[0.65rem] before:font-semibold before:uppercase before:tracking-eyebrow before:text-gold-700 before:content-[attr(data-label)] md:before:hidden">{p.party}</td>
+                    <td data-label="Record" className="block text-charcoal/80 md:table-cell md:py-4 md:pr-6 before:mb-0.5 before:block before:text-[0.65rem] before:font-semibold before:uppercase before:tracking-eyebrow before:text-gold-700 before:content-[attr(data-label)] md:before:hidden">{p.fact.text}<Cite ids={p.fact.sources} /></td>
+                    <td className="block md:table-cell md:py-4"><VerificationBadge level={p.fact.verification} /></td>
                   </tr>
                 ))}
               </tbody>

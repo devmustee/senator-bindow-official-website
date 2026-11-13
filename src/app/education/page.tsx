@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import { Cite, PageHero, ResearchNote, SectionHeading, VerificationBadge } from "@/components/ui";
 import { education, educationContext } from "@/content/content";
@@ -15,8 +14,8 @@ const stages = ["Primary education", "Secondary education", "Higher education", 
 export default function EducationPage() {
   return (
     <>
-      <PageHero image={images.mau} eyebrow="Education" title="Academic and Professional Background" intro="Academic degrees, professional certificates and honorary awards are listed separately. No institution or qualification appears unless a source names it." />
-      <section className="container grid gap-14 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-24">
+      <PageHero eyebrow="Education" title="Academic and Professional Background" intro="Academic degrees, professional certificates and honorary awards are listed separately. No institution or qualification appears unless a source names it." />
+      <section className="container section grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
         <div>
           <SectionHeading eyebrow="On record" title="What sources report" />
           <div className="mt-10 space-y-5">
@@ -45,7 +44,7 @@ export default function EducationPage() {
               <li key={s} className="relative">
                 <span aria-hidden className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full border border-gold bg-ivory" />
                 <p className="font-serif text-lg text-navy">{s}</p>
-                <p className="text-sm text-charcoal/55">Institution, years and qualification awaiting documents</p>
+                <p className="text-sm text-charcoal/70">Institution, years and qualification awaiting documents</p>
               </li>
             ))}
           </ol>

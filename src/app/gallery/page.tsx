@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import { Gallery } from "@/components/Gallery";
 import { PageHero, ResearchNote } from "@/components/ui";
@@ -20,8 +19,8 @@ export default function GalleryPage() {
   const pending = galleryCategories.filter((c) => !used.includes(c));
   return (
     <>
-      <PageHero image={images.numanConfluence} eyebrow="Visual Archive" title="Photo Gallery" intro={`${all.length} captioned, credited photographs of his public life and the places he served. Filter by collection or year and open any image full-screen.`} />
-      <section className="container py-16 lg:py-24">
+      <PageHero eyebrow="Visual Archive" title="Photo Gallery" intro={`${all.length} captioned, credited photographs of his public life and the places he served. Filter by collection or year and open any image full-screen.`} />
+      <section className="container section">
         <Gallery photos={all} categories={used} />
         <div className="mt-16">
           <ResearchNote>

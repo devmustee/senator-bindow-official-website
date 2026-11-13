@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import { PageHero, ResearchNote } from "@/components/ui";
 import { timeline, sectors, videos } from "@/content/content";
@@ -29,10 +28,10 @@ export default function MediaPage() {
 
   return (
     <>
-      <PageHero image={images.yolaGpo} eyebrow="Media Centre" title="Media and Press" intro="Coverage of his career, newest first. Each entry links to the original publisher. Articles are summarised, not copied." />
-      <section className="container py-16 lg:py-24">
+      <PageHero eyebrow="Media Centre" title="Media and Press" intro="Coverage of his career, newest first. Each entry links to the original publisher. Articles are summarised, not copied." />
+      <section className="container section">
         {years.map((y) => (
-          <div key={y} className="grid gap-6 border-t border-rule py-10 md:grid-cols-[140px_1fr]">
+          <div key={y} className="grid gap-4 border-t border-rule py-8 md:grid-cols-[140px_1fr] md:gap-6 md:py-10">
             <h2 className="font-serif text-4xl text-gold">{y}</h2>
             <ul className="grid gap-4">
               {byYear[y].map((s) => {
@@ -43,7 +42,7 @@ export default function MediaPage() {
                       <p className="eyebrow">{s.outlet}{s.date ? ` · ${s.date}` : ""}</p>
                       <h3 className="mt-2 font-serif text-xl text-navy group-hover:text-navy-700">{s.title}</h3>
                       {summary && <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-charcoal/70">{summary}</p>}
-                      <p className="mt-3 text-xs font-semibold text-gold-600">Original source ↗</p>
+                      <p className="mt-3 text-xs font-semibold text-gold-700">Original source ↗</p>
                     </a>
                   </li>
                 );

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const rows: ProjectRow[] = allProjects.map((p) => {
-    const img = p.image ? images[p.image] : p.sector.image ? images[p.sector.image] : undefined;
+    const img = p.image ? images[p.image] : undefined;
     return {
       slug: p.slug,
       title: p.title,
@@ -25,17 +25,18 @@ export default function ProjectsPage() {
       verification: p.implemented.verification,
       status: p.status,
       summary: p.implemented.text,
-      image: img ? { src: img.src, alt: img.alt, contain: img.noDerivatives } : undefined,
+      image: img ? { src: img.src, alt: img.alt, contain: img.noDerivatives, context: p.imageIsContext } : undefined,
     };
   });
   return (
     <>
-      <PageHero image={images.jimetaMarket} eyebrow="Governorship 2015–2019" title="Projects and Programmes" intro={`${rows.length} documented projects and policies. Filter by sector or search by place, then open any card for its full record.`} />
-      <section className="container py-16 lg:py-20">
+      <PageHero eyebrow="Governorship 2015–2019" title="Projects and Programmes" intro={`${rows.length} documented projects and policies. Filter by sector or search by place, then open any card for its full record.`} />
+      <section className="container section">
+        <h2 className="sr-only">Project list</h2>
         <ProjectIndex rows={rows} sectors={sectors.map((s) => ({ slug: s.slug, title: s.title }))} />
         <div className="mt-14">
           <ResearchNote>
-            Card images are licensed photographs of each project's sector or location, not of the project itself unless the full record says so. Photographs of the completed works are being sought from his office and the state ministries.
+            Most projects have no photograph yet. Where a card has one, it is a licensed photograph of the event or location, labelled as such. Photographs of the completed works are being sought from his office, the state ministries and the people who photographed them.
           </ResearchNote>
         </div>
       </section>

@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Cite, PageHero, ResearchNote, VerificationBadge } from "@/components/ui";
@@ -175,14 +174,28 @@ const chapters: Chapter[] = [
 export default function BiographyPage() {
   return (
     <>
-      <PageHero image={images.lamidoPalace} eyebrow="Biography" title="His Life Story" intro={`${profile.name}: businessman, Senator for Adamawa North and Governor of Adamawa State.`} />
-      <div className="container grid gap-12 py-16 lg:grid-cols-[240px_1fr] lg:py-24">
-        <nav aria-label="Chapters" className="lg:sticky lg:top-28 lg:self-start">
+      <PageHero eyebrow="Biography" title="His Life Story" intro={`${profile.name}: businessman, Senator for Adamawa North and Governor of Adamawa State.`} />
+      <div className="container section grid gap-8 lg:grid-cols-[240px_1fr] lg:gap-12">
+        <details className="rounded-md border border-rule bg-white lg:hidden">
+          <summary className="flex min-h-[48px] items-center justify-between px-4 text-sm font-semibold text-navy">
+            Jump to a chapter <span aria-hidden className="text-gold-700">+</span>
+          </summary>
+          <ol className="grid border-t border-rule px-4 py-2 text-sm">
+            {chapters.map((c) => (
+              <li key={c.id}>
+                <a href={`#${c.id}`} className="-ml-px flex min-h-[40px] items-center border-l border-transparent pl-4 text-charcoal/75 hover:border-gold hover:text-navy">
+                  {c.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </details>
+        <nav aria-label="Chapters" className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
           <p className="eyebrow">Chapters</p>
           <ol className="mt-4 grid gap-1 border-l border-rule text-sm">
             {chapters.map((c) => (
               <li key={c.id}>
-                <a href={`#${c.id}`} className="-ml-px block border-l border-transparent py-1.5 pl-4 text-charcoal/70 hover:border-gold hover:text-navy">
+                <a href={`#${c.id}`} className="-ml-px flex min-h-[40px] items-center border-l border-transparent pl-4 text-charcoal/75 hover:border-gold hover:text-navy">
                   {c.title}
                 </a>
               </li>
@@ -191,15 +204,15 @@ export default function BiographyPage() {
         </nav>
         <article className="max-w-3xl">
           {chapters.map((c) => (
-            <section key={c.id} id={c.id} className="scroll-mt-28 border-b border-rule py-12 first:pt-0 last:border-0">
+            <section key={c.id} id={c.id} className="border-b border-rule py-10 first:pt-0 last:border-0 sm:py-12">
               <div className="flex items-baseline gap-4">
-                <span className="font-serif text-4xl text-gold/70">{String(c.n).padStart(2, "0")}</span>
+                <span className="font-serif text-3xl text-gold-700/70 sm:text-4xl">{String(c.n).padStart(2, "0")}</span>
                 <div>
                   {c.date && <p className="eyebrow">{c.date}</p>}
-                  <h2 className="font-serif text-3xl">{c.title}</h2>
+                  <h2 className="font-serif text-2xl leading-tight sm:text-3xl">{c.title}</h2>
                 </div>
               </div>
-              <div className="prose-body mt-6">{c.body}</div>
+              <div className="prose-body mt-5 sm:mt-6">{c.body}</div>
             </section>
           ))}
           <ResearchNote>

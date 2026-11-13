@@ -1,4 +1,3 @@
-import { images } from "@/content/images";
 import type { Metadata } from "next";
 import { Cite, PageHero, ResearchNote, SectionHeading } from "@/components/ui";
 import { statements, thirdPartyAssessments } from "@/content/content";
@@ -36,10 +35,10 @@ export default function LeadershipPage() {
   const direct = statements.filter((s) => s.direct);
   return (
     <>
-      <PageHero image={images.yolaEntrance} eyebrow="Leadership" title="Philosophy and Values" intro="Drawn only from what he has said on the record. Quotation marks are used only for words a source attributes to him directly." />
-      <section className="container py-16 lg:py-24">
+      <PageHero eyebrow="Leadership" title="Philosophy and Values" intro="Drawn only from what he has said on the record. Quotation marks are used only for words a source attributes to him directly." />
+      <section className="container section">
         <SectionHeading eyebrow="Themes" title="Priorities he set out in office" />
-        <div className="mt-12 grid gap-px overflow-hidden rounded-sm border border-rule bg-rule md:grid-cols-2">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-md border border-rule bg-rule md:grid-cols-2">
           {themes.map((t, i) => (
             <article key={t.title} className="bg-white p-8">
               <span className="font-serif text-3xl text-gold/70">{String(i + 1).padStart(2, "0")}</span>
@@ -50,14 +49,14 @@ export default function LeadershipPage() {
         </div>
       </section>
       {direct.map((q) => (
-        <section key={q.text} className="bg-navy py-20 text-white">
+        <section key={q.text} className="section bg-navy text-white">
           <figure className="container max-w-3xl text-center">
             <blockquote className="font-serif text-3xl leading-snug sm:text-4xl">&ldquo;{q.text}&rdquo;</blockquote>
             <figcaption className="mt-6 text-sm text-white/60">{q.context}, {q.date} <Cite ids={[q.source]} /></figcaption>
           </figure>
         </section>
       ))}
-      <section className="container py-16">
+      <section className="container section-tight">
         <SectionHeading eyebrow="As others saw it" title="Contemporary assessments" />
         <div className="mt-8 space-y-4">
           {thirdPartyAssessments.map((a) => (
